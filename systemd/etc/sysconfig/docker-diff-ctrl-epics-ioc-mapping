@@ -1,0 +1,23 @@
+# --- DIFFERENCE CONTROL 1 ---
+
+DIFF_1_PV_AREA_PREFIX=TEST:                        # Slit/scraper prefix 1
+DIFF_1_PV_DEVICE_PREFIX=DI-DIFF-1:                 # Slit/scraper prefix 2
+DIFF_1_LEFT_CTRL_PREFIX=TEST-Glob:DI-DMC3017-1:    # Left slit/scraper side controller PVs prefix
+DIFF_1_RIGHT_CTRL_PREFIX=TEST-Glob:DI-DMC30017-2:  # Right slit/scraper side controller PVs prefix
+DIFF_1_EGU=mm                                      # Engineering units used
+
+# --- DIFFERENCE CONTROL 2 ---
+
+DIFF_2_PV_AREA_PREFIX=
+DIFF_2_PV_DEVICE_PREFIX=
+DIFF_2_LEFT_CTRL_PREFIX=
+DIFF_2_RIGHT_CTRL_PREFIX=
+DIFF_2_EGU=
+
+# --- DIFFERENCE CONTROL XX ---
+
+DIFF_XX_PV_AREA_PREFIX=
+DIFF_XX_PV_DEVICE_PREFIX=
+DIFF_XX_LEFT_CTRL_PREFIX=
+DIFF_XX_RIGHT_CTRL_PREFIX=
+DIFF_XX_EGU=

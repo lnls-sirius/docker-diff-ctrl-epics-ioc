@@ -1,0 +1,19 @@
+[Unit]
+Description=Difference Control container instance %I
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=2
+EnvironmentFile=/etc/sysconfig/docker-diff-ctrl-epics-ioc
+EnvironmentFile=/etc/sysconfig/docker-diff-ctrl-epics-ioc-mapping
+Environment=IMAGE_VERSION=debian-9.2
+# Used inside runDiffCtrl script
+Environment=DIFF_INSTANCE=%i
+ExecStartPre=-/usr/bin/docker pull lnlsdig/diff-ctrl-epics-ioc:${IMAGE_VERSION}
+ExecStart=/usr/local/bin/runDiffCtrl.sh
+ExecStop=/usr/local/bin/stopDiffCtrl.sh
+
+[Install]
+WantedBy=multi-user.target
