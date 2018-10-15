@@ -2,7 +2,7 @@ FROM lnls/epics-dist:base-3.15-debian-9
 
 ENV IOC_REPO diff-ctrl-epics-ioc
 ENV BOOT_DIR iocDiffCtrl
-ENV COMMIT v1.0.0
+ENV COMMIT v1.0.1
 
 RUN git clone https://github.com/lnls-dig/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
     cd /opt/epics/${IOC_REPO} && \
