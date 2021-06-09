@@ -1,10 +1,12 @@
-FROM lnls/epics-dist:base-3.15-synapps-lnls-R1-0-0-debian-9.5
+FROM lnls/epics-synapps:base-3.15-synapps-lnls-R1-0-0-debian-9.13
 
-ENV IOC_REPO diff-ctrl-epics-ioc
+ARG IOC_GROUP
+ARG IOC_REPO
+ARG COMMIT
+
 ENV BOOT_DIR iocDiffCtrl
-ENV COMMIT v2.2.0
 
-RUN git clone https://github.com/lnls-dig/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
+RUN git clone https://github.com/${IOC_GROUP}/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
     cd /opt/epics/${IOC_REPO} && \
     git checkout ${COMMIT} && \
     echo 'EPICS_BASE=/opt/epics/base' > configure/RELEASE.local && \
