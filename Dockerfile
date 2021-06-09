@@ -1,8 +1,10 @@
-FROM lnls/epics-synapps:base-3.15-synapps-lnls-R1-0-0-debian-9.13
+ARG DEBIAN_VERSION
+FROM lnls/epics-synapps:base-3.15-synapps-lnls-R1-0-0-${DEBIAN_VERSION}
 
+ARG COMMIT
+ARG DEBIAN_VERSION
 ARG IOC_GROUP
 ARG IOC_REPO
-ARG COMMIT
 
 ENV BOOT_DIR iocDiffCtrl
 
