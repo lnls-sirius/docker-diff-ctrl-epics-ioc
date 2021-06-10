@@ -1,6 +1,9 @@
+ARG BASE_VERSION
 ARG DEBIAN_VERSION
-FROM lnls/epics-synapps:base-3.15-synapps-lnls-R1-0-0-${DEBIAN_VERSION}
+ARG SYNAPPS_VERSION
+FROM lnls/epics-synapps:${BASE_VERSION}-${SYNAPPS_VERSION}-${DEBIAN_VERSION}
 
+ARG BASE_VERSION
 ARG COMMIT
 ARG DEBIAN_VERSION
 ARG IOC_GROUP
@@ -9,10 +12,11 @@ ARG IOC_REPO
 ENV BOOT_DIR iocDiffCtrl
 
 RUN git clone https://github.com/${IOC_GROUP}/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
+    ln --verbose --symbolic $(ls --directory /opt/epics/synApps*) /opt/epics/synApps &&\
     cd /opt/epics/${IOC_REPO} && \
     git checkout ${COMMIT} && \
     echo 'EPICS_BASE=/opt/epics/base' > configure/RELEASE.local && \
-    echo 'SUPPORT=/opt/epics/synApps-lnls-R1-0-0/support' >> configure/RELEASE.local && \
+    echo 'SUPPORT=/opt/epics/synApps/support' >> configure/RELEASE.local && \
     echo 'AUTOSAVE=$(SUPPORT)/autosave-R5-9' >> configure/RELEASE.local && \
     echo 'SNCSEQ=$(SUPPORT)/seq-2-2-6' >> configure/RELEASE.local && \
     echo 'CALC=$(SUPPORT)/calc-R3-7' >> configure/RELEASE.local && \
